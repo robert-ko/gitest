@@ -1,0 +1,107 @@
+## Hacker Notes:
+
+[hackers guide](https://wildlyinaccurate.com/a-hackers-guide-to-git/)
+
+See CS Dojo
+
+
+git init  // creates .git
+
+.git/objects, where Git stores all of its objects; 
+.git/refs, where Git stores all of its references.
+
+A tree object in Git can be thought of as a directory. It contains a list of blobs (files) and other tree objects 
+
+A commit object is essentially a pointer to root directory, parent hash, met
+
+ $ git add README
+ $ git commit -m "First commit"
+
+$ git show --format=raw d409ca7   // to see Metadata
+
+$ git status
+On branch master
+
+Branches are references (in .git/refs/heads/master)
+.git/HEAD symbolic link to current branch
+
+$ git branch test-branch
+Creates test-bench in ref pointed to current commit
+
+$ git checkout test-branch
+Changes .git/HEAD to test-branch
+
+$ git add README
+$ git commit -m "Update README in a new branch"
+
+$ git tag -a -m "Tagged 1.0" 1.0
+// -a annotated creates new object with timestamp
+
+### Compound commands
+
+// create branch switch head
+$ git checkout -b feature-branch
+Switched to a new branch 'feature-branch'
+
+// add and commit
+$ git commit -am "Finished the new feature"
+[feature-branch 0c21359] Finished the new feature
+
+### Merging
+
+$ git merge feature-branch
+// default is merge, but may create loops
+
+$ git rebase master foo
+// take all of the commits from <target> and play them on top of <base> one by one.
+
+### Restore file
+
+you delete a file from a repository, and then run 
+git checkout <file>
+
+// how to go back versions?
+
+# Remotes
+
+$ git init --bare
+// intended for clone, push
+.git/config
+// says remote, branch info
+
+$ git clone
+// make changes
+$ git push origin master
+// recommend specifiying both remote, branch
+
+$ git fetch origin
+// updates FETCH HEAD
+$ git checkout feature-branch
+
+$ git pull
+// compoudn get fetch + merge
+
+$ git refmote add backup https://robert_ko@bitbucket.org/robert_ko/omcs8803_introos.git
+$ git push backup master
+// add second remote and pushes master branch
+
+git commit --amend -m "New commit message"
+git push --force origin <BRANCH-NAME>
+
+# Diff
+git diff HEAD^^ HEAD main.c
+git difftool HEAD^^ HEAD echo/echoclient.c
+
+# Specify a revision
+The command takes the usual style of revision, meaning you can use any of the following:
+
+branch name (as suggested by ash)
+HEAD + x number of ^ characters
+The SHA1 hash of a given revision
+The first few (maybe 5) characters of a given SHA1 hash
+
+# replace
+git checkout mybranchname path/to/file.txt
+
+# gui
+gitkraken
