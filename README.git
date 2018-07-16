@@ -34,6 +34,13 @@ Changes .git/HEAD to test-branch
 $ git add README
 $ git commit -m "Update README in a new branch"
 
+// Push to remote (need to create remote)
+
+git remote add origin https://github.com/robert-ko/gitest.git
+git push -u origin master
+
+
+
 $ git tag -a -m "Tagged 1.0" 1.0
 // -a annotated creates new object with timestamp
 
